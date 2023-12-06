@@ -2,23 +2,18 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-class BaseConfigurator:
+class SiftConfigurator:
     def __init__(self):
-        pass
-
-class SiftConfigurator(BaseConfigurator):
-    def __init__(self):
-        super().__init__()
         self.sift = cv2.xfeatures2d.SIFT_create()
 
-class MatcherConfigurator(BaseConfigurator):
+class MatcherConfigurator(SiftConfigurator):
     def __init__(self):
         super().__init__()
         self.FLANN_INDEX_KDTREE = 0
         self.index_params = dict(algorithm=self.FLANN_INDEX_KDTREE, trees=5)
         self.search_params = dict(checks=80)
 
-class ObjectDetector(SiftConfigurator, MatcherConfigurator):
+class ObjectDetector(MatcherConfigurator):
     def __init__(self):
         super().__init__()
 
