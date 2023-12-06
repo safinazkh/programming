@@ -6,7 +6,7 @@ class SiftConfigurator:
     def __init__(self):
         self.sift = cv2.xfeatures2d.SIFT_create()
 
-class MatcherConfigurator(SiftConfigurator):
+class MatcherConfigurator:
     def __init__(self):
         super().__init__()
         self.FLANN_INDEX_KDTREE = 0
